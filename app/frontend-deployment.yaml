@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diagnosy-frontend
+  namespace: diagnosy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: diagnosy-frontend
+  template:
+    metadata:
+      labels:
+        app: diagnosy-frontend
+    spec:
+      containers:
+        - name: diagnosy-frontend
+          image: asia-docker.pkg.dev/multi-cloud-app-413619/gcr-asia-repo/diagnosy/webapp:1.0.0
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
