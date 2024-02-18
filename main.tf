@@ -72,8 +72,12 @@ resource "google_compute_subnetwork" "subnet" {
   ip_cidr_range = "10.10.0.0/24"
 }
 
-# kubernetes
 
+#resource "google_project_iam_member" "artifact_role" {
+#  role = "roles/artifactregistry.reader"
+#  member  = "serviceAccount:diagnosy-account@multi-cloud-app-413619.iam.gserviceaccount.com"
+#  project = var.project_id
+#}
 
 # GKE cluster
 data "google_container_engine_versions" "gke_version" {
@@ -106,8 +110,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
   node_config {
     oauth_scopes = [
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/cloud-platform",
     ]
 
     labels = {
