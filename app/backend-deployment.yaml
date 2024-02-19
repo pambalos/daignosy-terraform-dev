@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: diagnosy-backend
-          image: asia-docker.pkg.dev/multi-cloud-app-413619/gcr-asia-repo/diagnosy/api:1.0.0
+          image: asia-docker.pkg.dev/multi-cloud-app-413619/gcr-asia-repo/diagnosy/api:1.0.3
           ports:
             - containerPort: 3001
           imagePullPolicy: Always
