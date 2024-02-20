@@ -22,7 +22,10 @@ spec:
           - containerPort: 8081
           env:
           - name: ME_CONFIG_MONGODB_SERVER
-            value: "mongo-db"
+            valueFrom:
+              configMapKeyRef:
+                name: mongodb-configmap
+                key: database_url
           - name: ME_CONFIG_MONGODB_PORT
             value: "27017"
           - name: ME_CONFIG_BASICAUTH_USERNAME

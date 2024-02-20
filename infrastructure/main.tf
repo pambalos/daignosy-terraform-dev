@@ -91,6 +91,7 @@ resource "google_container_cluster" "primary" {
 
   node_config {
 
+    spot = true
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
@@ -110,6 +111,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
 
   node_config {
+    spot = true
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
