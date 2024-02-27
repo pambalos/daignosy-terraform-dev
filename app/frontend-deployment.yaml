@@ -15,13 +15,18 @@ spec:
     spec:
       containers:
         - name: diagnosy-frontend
-          image: asia-docker.pkg.dev/multi-cloud-app-413619/gcr-asia-repo/diagnosy/webapp:1.0.2
+          image: asia-docker.pkg.dev/multi-cloud-app-413619/gcr-asia-repo/diagnosy/webapp:1.0.3
           ports:
             - containerPort: 3000
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           env:
-            - name: BACKEND_URL
+            - name: DIAGNOSY_API_HOST
               valueFrom:
                 configMapKeyRef:
                   name: diagnosy-configmap
-                  key: backend_url
+                  key: backend_host
+            - name: DIAGNOSY_API_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: diagnosy-configmap
+                  key: backend_port

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diagnosy-nginx
+  namespace: diagnosy
+  labels:
+      app: diagnosy-nginx
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+          app: diagnosy-nginx
+    template:
+        metadata:
+          labels:
+              app: diagnosy-nginx
+        spec:
+          containers:
+            - name: diagnosy-nginx
+              image: nginx:1.25-alpine
+              ports:
+              - containerPort: 80
+              volumeMounts:
+                - name: nginx-config
+                  mountPath: /etc/nginx/nginx.conf
+                  subPath: nginx.conf
+                  readOnly: true
+          volumes:
+            - name: nginx-conf
+              configMap:
+                name: nginx-conf
+                items:
+                  - key: nginx.conf
+                    path: nginx.conf

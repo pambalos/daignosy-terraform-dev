@@ -18,5 +18,5 @@ spec:
           image: asia-docker.pkg.dev/multi-cloud-app-413619/gcr-asia-repo/diagnosy/api:1.0.5
           ports:
             - containerPort: 3001
-          imagePullPolicy: Always
+          imagePullPolicy: Never
 
